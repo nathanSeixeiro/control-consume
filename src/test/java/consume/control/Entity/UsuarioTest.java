@@ -16,5 +16,6 @@ public class UsuarioTest {
         assertNotNull(userDto);
         assertNotNull(user);
         assertEquals(userDto.nome(), user.getNome());
+        assertEquals(userDto.email(), user.getEmail());
     }
 }
