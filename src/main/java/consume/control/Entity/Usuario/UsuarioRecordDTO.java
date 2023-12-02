@@ -2,7 +2,7 @@ package consume.control.Entity.Usuario;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record DadosCadastroUsuario(
+public record UsuarioRecordDTO(
         @NotBlank
         String nome,
         @NotBlank
