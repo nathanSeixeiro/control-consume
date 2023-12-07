@@ -17,7 +17,7 @@ create table consumoEnergetico(
 
 create table consumoAparelho(
     id bigint not null auto_increment,
-    deviceConsume decimal(2,2) not null,
+    deviceConsume time not null,
 
     primary key(id)
 );
