@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("consume/device")
 public class ConsumeDispositivosController {
     @Autowired
     private ConsumoDispositivosRepository repository;
