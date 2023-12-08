@@ -6,27 +6,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
-import java.util.Date;
 
-@Table(name = "deviceConsumption")
-@Entity(name = "deviceConsumption")
+@Table(name = "consumoAparelho")
+@Entity(name = "consumoAparelho")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ConsumoUsoDispositivo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalTime consumedHours;
+    private LocalTime deviceConsume;
 
     public ConsumoUsoDispositivo(ConsumoUsoDispositivoRecordDTO dados) {
-        consumedHours = dados.consumedHours();
+        deviceConsume = dados.deviceConsume();
     }
 
-    public LocalTime getConsumedHours() {
-        return consumedHours;
+    public LocalTime getDeviceConsume() {
+        return deviceConsume;
     }
 
-    public void setConsumedHours(LocalTime consumedHours) {
-        this.consumedHours = consumedHours;
+    public void setDeviceConsume(LocalTime deviceConsume) {
+        this.deviceConsume = deviceConsume;
     }
 }

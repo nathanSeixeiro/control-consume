@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/consumo/energy")
+@RequestMapping("/consume/energy")
 public class ConsumoEnergeticoController {
     @Autowired
     private ConsumoEnergeticoRepository repository;

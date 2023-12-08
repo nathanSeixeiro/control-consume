@@ -17,7 +17,7 @@ public class ConsumoDispositivoTest {
 
         assertNotNull(dadosDTO);
         assertNotNull(consumoUsoDispositivo);
-        assertNotNull(dadosDTO.consumedHours());
-        assertNotNull(consumoUsoDispositivo.getConsumedHours());
+        assertNotNull(dadosDTO.deviceConsume());
+        assertNotNull(consumoUsoDispositivo.getDeviceConsume());
     }
 }

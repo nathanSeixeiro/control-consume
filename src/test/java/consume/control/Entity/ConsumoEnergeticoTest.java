@@ -15,8 +15,9 @@ public class ConsumoEnergeticoTest {
 
     assertNotNull(dadosDTO);
     assertNotNull(consumoEnergetico);
-    assertEquals(dadosDTO.watts(),dadosDTO.billValue(), dadosDTO.billMonth());
-    assertEquals(consumoEnergetico.getWatts(), consumoEnergetico.getBillValue(), consumoEnergetico.getBillMonth());
+    assertEquals(dadosDTO.watts(), consumoEnergetico.getWatts());
+    assertEquals(dadosDTO.billMonth(), consumoEnergetico.getBillMonth());
+    assertEquals(dadosDTO.billValue(), consumoEnergetico.getBillValue());
     }
 
     // metodos

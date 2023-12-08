@@ -10,7 +10,7 @@ create table consumoEnergetico(
     id bigint not null auto_increment,
     watts decimal(4,4) not null,
     billvalue decimal(10,2) not null,
-    billmonth varchar(50),
+    billmonth varchar(50) not null,
 
     primary key(id)
 );

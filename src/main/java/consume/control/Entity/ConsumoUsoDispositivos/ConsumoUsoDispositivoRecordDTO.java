@@ -7,6 +7,6 @@ import java.util.Date;
 
 public record ConsumoUsoDispositivoRecordDTO(
         @NotNull
-        LocalTime consumedHours
+        LocalTime deviceConsume
 ) {
 }
