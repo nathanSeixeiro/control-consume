@@ -7,4 +7,5 @@ public record UsuarioRecordDTO(
         String nome,
         @NotBlank
         String email) {
+
 }

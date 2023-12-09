@@ -1,10 +1,14 @@
 package consume.control.Entity.Usuario;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import consume.control.Entity.ConsumoEnergetico.ConsumoEnergetico;
+import consume.control.Entity.ConsumoUsoDispositivos.ConsumoUsoDispositivo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Objects;
 
 @Table(name = "usuario")
@@ -15,9 +19,18 @@ import java.util.Objects;
 
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id_usuario;
     private String nome;
     private String email;
+
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<ConsumoEnergetico> consumosEnergeticos;
+
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<ConsumoUsoDispositivo> consumoDispositivos;
+
 
     public Usuario(UsuarioRecordDTO dados) {
         nome = dados.nome();
@@ -25,11 +38,11 @@ public class Usuario {
     }
 
     public long getId() {
-        return id;
+        return id_usuario;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.id_usuario = id;
     }
 
     public String getEmail() {
@@ -48,17 +61,21 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public List<ConsumoEnergetico> getConsumosEnergeticos() { return consumosEnergeticos; }
+
+    public List<ConsumoUsoDispositivo> getConsumoDispositivos() { return consumoDispositivos; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return id == usuario.id && Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email);
+        return id_usuario == usuario.id_usuario && Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, email);
+        return Objects.hash(id_usuario, nome, email);
     }
 
 }

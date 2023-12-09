@@ -1,23 +1,24 @@
-create table usuario(
-    id bigint not null auto_increment,
-    nome varchar(255) not null,
-    email varchar(255) not null unique,
-
-    primary key(id)
+CREATE TABLE usuario (
+    id_usuario BIGINT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    PRIMARY KEY (id_usuario)
 );
 
-create table consumoEnergetico(
-    id bigint not null auto_increment,
-    watts decimal(4,4) not null,
-    billvalue decimal(10,2) not null,
-    billmonth varchar(50) not null,
-
-    primary key(id)
+CREATE TABLE consumoEnergetico (
+    id_consumoe BIGINT NOT NULL AUTO_INCREMENT,
+    watts DECIMAL(4, 4) NOT NULL,
+    billValue DECIMAL(10, 2) NOT NULL,
+    billMonth VARCHAR(50) NOT NULL UNIQUE,
+    usuario_id BIGINT,
+    PRIMARY KEY (id_consumoe),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id_usuario)
 );
 
-create table consumoAparelho(
-    id bigint not null auto_increment,
-    deviceConsume time not null,
-
-    primary key(id)
+CREATE TABLE consumoAparelho (
+    id_consumoa BIGINT NOT NULL AUTO_INCREMENT,
+    deviceConsume TIME NOT NULL,
+    usuario_id BIGINT,
+    PRIMARY KEY (id_consumoa),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id_usuario)
 );

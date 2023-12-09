@@ -1,14 +1,15 @@
-package consume.control.infra;
+package med.voll.api.infra;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class ErrorHandler {
+public class TratadorDeErros {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity tratarErro404() {
@@ -18,11 +19,11 @@ public class ErrorHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarErro400(MethodArgumentNotValidException exception) {
         var erros = exception.getFieldErrors();
-        return ResponseEntity.badRequest().body(erros.stream().map(ErrorValidationDTO::new).toList());
+        return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
     }
 
-    public record ErrorValidationDTO(String campo, String mensagem) {
-        public ErrorValidationDTO(FieldError error) {
+    private record DadosErroValidacao(String campo, String mensagem) {
+        public DadosErroValidacao(FieldError error) {
             this(error.getField(), error.getDefaultMessage());
         }
     }
