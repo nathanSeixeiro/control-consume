@@ -48,5 +48,17 @@ public class ConsumeDispositivosController {
         repository.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/total")
+    public ResponseEntity<ConsumoDispositivo> getTotalTime(){
+        var consume = repository.findAll();
+        long totalSeconds = consume.stream()
+            .mapToLong(consumo -> consumo.getDeviceConsume().toSecondOfDay())
+            .sum();
+
+        LocalTime totalTime = LocalTime.ofSecondOfDay(totalSeconds);
+        return ResponseEntity.ok(totalTime);
+    }
+
 }
 
